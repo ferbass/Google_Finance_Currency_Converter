@@ -2,8 +2,6 @@
 
 GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL').value # 2.78
 
-It is more consistent than Google Calculator API.
-
 == Contributing to google_finance_currency_converter
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
