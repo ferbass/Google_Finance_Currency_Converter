@@ -16,6 +16,6 @@ class GoogleFinanceCurrencyConverter
     end
 
     def parse_response(response)
-      response.scan(/<span class=bld>([^.]+\.(?:\d{1,2}))/)[0][0].to_f
+      response.scan(/<span class=bld>([^.]+(?:\.(?:\d{1,2}))?)/)[0][0].to_f
     end
 end
