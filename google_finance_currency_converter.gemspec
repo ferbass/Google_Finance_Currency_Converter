@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "google_finance_currency_converter"
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pedro Menezes"]
-  s.date = "2012-05-16"
+  s.date = "2013-02-04"
   s.description = "a wrapper for google finance currency converter"
   s.email = "pedrojudo@gmail.com"
   s.extra_rdoc_files = [
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/pedromenezes/google_finance_currency_converter"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.17"
+  s.rubygems_version = "1.8.24"
   s.summary = "a wrapper for google finance currency converter"
 
   if s.respond_to? :specification_version then
