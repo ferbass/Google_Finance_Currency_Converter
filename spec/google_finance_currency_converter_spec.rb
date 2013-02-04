@@ -12,7 +12,7 @@ describe "GoogleFinanceCurrencyConverter" do
     stub_converted_val(2.784)
 
     converter = GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL')
-    converter.value.should == 2.78
+    converter.value.should == 2.784
   end
 end
 
