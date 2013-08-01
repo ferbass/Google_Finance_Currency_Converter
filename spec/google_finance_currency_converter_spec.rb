@@ -6,14 +6,14 @@ describe GoogleFinanceCurrencyConverter do
       stub_converted_val_response(2)
 
       converter = GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL')
-      converter.value.should == 2
+      converter.rate.should == 2
     end
     
     it "should work with currency that returns a float" do
       stub_converted_val_response(2.784)
 
       converter = GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL')
-      converter.value.should == 2.784
+      converter.rate.should == 2.784
     end
   end
   
@@ -29,7 +29,7 @@ describe GoogleFinanceCurrencyConverter do
       
       converter = GoogleFinanceCurrencyConverter.new(:from => 'BRL', :to => 'ALL')
       lambda {
-        converter.value
+        converter.rate
       }.should raise_error("Rate not found")
     end
   end

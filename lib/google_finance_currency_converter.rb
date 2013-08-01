@@ -7,7 +7,7 @@ class GoogleFinanceCurrencyConverter
     raise "Same code" if @from == @to
   end
 
-  def value
+  def rate
     parse_response(request)
   end
 
@@ -17,8 +17,8 @@ class GoogleFinanceCurrencyConverter
     end
 
     def parse_response(response)
-      value = response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)
-      raise "Rate not found" if value.empty?
-      value[0][0].to_f
+      rate = response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)
+      raise "Rate not found" if rate.empty?
+      rate[0][0].to_f
     end
 end

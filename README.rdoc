@@ -1,6 +1,6 @@
 = google_finance_currency_converter
 
-GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL').value # 2.784
+GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL').rate # 2.784
 
 == Contributing to google_finance_currency_converter
  
