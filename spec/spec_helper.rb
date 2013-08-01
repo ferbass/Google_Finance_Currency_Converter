@@ -12,3 +12,17 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 RSpec.configure do |config|
   
 end
+
+def stub_converted_val_response(val)
+  File.open(File.expand_path(File.dirname(__FILE__) + '/helper/response.html'), 'r') do |f|
+    stub_request(:get, "http://www.google.com/finance/converter?a=1&from=GBP&to=BRL").
+        to_return(:body => f.read.gsub("<converted_val>", val.to_s))
+  end
+end
+
+def stub_error_response
+  File.open(File.expand_path(File.dirname(__FILE__) + '/helper/error.html'), 'r') do |f|
+    stub_request(:get, "http://www.google.com/finance/converter?a=1&from=BRL&to=ALL").
+        to_return(:body => f.read)
+  end
+end

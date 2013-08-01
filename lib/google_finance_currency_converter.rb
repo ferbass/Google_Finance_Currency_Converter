@@ -4,6 +4,7 @@ class GoogleFinanceCurrencyConverter
   def initialize(params={})
     @from = params[:from]
     @to = params[:to]
+    raise "Same code" if @from == @to
   end
 
   def value
@@ -16,6 +17,8 @@ class GoogleFinanceCurrencyConverter
     end
 
     def parse_response(response)
-      response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)[0][0].to_f
+      value = response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)
+      raise "Rate not found" if value.empty?
+      value[0][0].to_f
     end
 end
