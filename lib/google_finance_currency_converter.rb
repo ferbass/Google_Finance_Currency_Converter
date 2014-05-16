@@ -5,7 +5,7 @@ class GoogleFinanceCurrencyConverter
     @from = params[:from]
     @to = params[:to]
     @amount = params[:amount]
-    @amount = 1 if @amount == nil || @amount == 0
+    @amount = 0 if @amount == nil
     raise "Same code" if @from == @to
   end
 
