@@ -16,14 +16,14 @@ describe GoogleFinanceCurrencyConverter do
       converter.rate.should == 4.784
     end
 
-    it "should set amount to 1 when amount is 0" do
-        stub_converted_val_response(2.784, 1)
+    it "should return default value when user set amount 0" do
+        stub_converted_val_response(2.784, 0)
         converter = GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL', :amount => 0)
         converter.rate.should == 2.784
     end
 
-    it "should set amount to 1 when amount is nil" do
-        stub_converted_val_response(2.784, 1)
+    it "should set amount to 0 when amount is nil" do
+        stub_converted_val_response(2.784, 0)
         converter = GoogleFinanceCurrencyConverter.new(:from => 'GBP', :to => 'BRL', :amount => nil)
         converter.rate.should == 2.784
     end
