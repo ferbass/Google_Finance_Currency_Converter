@@ -4,6 +4,8 @@ class GoogleFinanceCurrencyConverter
   def initialize(params={})
     @from = params[:from]
     @to = params[:to]
+    @amount = params[:amount]
+    @amount = 1 if @amount == nil || @amount == 0
     raise "Same code" if @from == @to
   end
 
@@ -13,7 +15,7 @@ class GoogleFinanceCurrencyConverter
 
   private
     def request
-      open("http://www.google.com/finance/converter?a=1&from=#{@from}&to=#{@to}").read
+      open("http://www.google.com/finance/converter?a=#{@amount}&from=#{@from}&to=#{@to}").read
     end
 
     def parse_response(response)
