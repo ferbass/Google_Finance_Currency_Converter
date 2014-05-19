@@ -10,13 +10,19 @@ require 'google_finance_currency_converter'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  
+
 end
 
-def stub_converted_val_response(val)
+def stub_converted_response_value(params)
+  amount_to_convert = params[:amount_to_convert] or 0
+  response_value = params[:response_value] or 0
+
   File.open(File.expand_path(File.dirname(__FILE__) + '/helper/response.html'), 'r') do |f|
-    stub_request(:get, "http://www.google.com/finance/converter?a=1&from=GBP&to=BRL").
-        to_return(:body => f.read.gsub("<converted_val>", val.to_s))
+    stub_request(:get, "http://www.google.com/finance/converter?a=#{amount_to_convert}&from=GBP&to=BRL").
+        to_return(
+          :body => f.read.gsub("<amount_to_convert>", amount_to_convert.to_s)
+                         .gsub("<response_value>", response_value.to_s)
+        )
   end
 end
 
