@@ -5,11 +5,12 @@ class GoogleFinanceCurrencyConverter
     @from = params[:from]
     @to = params[:to]
     @amount = params[:amount]
-    @amount = 0 if @amount == nil
+    @amount = 1 if @amount == nil
     raise "Same code" if @from == @to
   end
 
-  def rate
+  def result
+    return 0 if @amount == 0
     parse_response(request)
   end
 
@@ -19,8 +20,8 @@ class GoogleFinanceCurrencyConverter
     end
 
     def parse_response(response)
-      rate = response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)
-      raise "Rate not found" if rate.empty?
-      rate[0][0].to_f
+      scanned_result = response.scan(/<span class=bld>([^.]+(?:\.(?:\d+))?)/)
+      raise "Result not found" if scanned_result.empty?
+      scanned_result[0][0].to_f
     end
 end
